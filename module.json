@@ -1,0 +1,24 @@
+{
+    "name": "slugblaster-actor-sheet",
+    "title": "Slugblaster actor sheet for 5E and PF2e",
+    "description": "This module adds an additional actor sheet template - Slugblaster style!",
+    "authors": [{ "name": "Tom van der Lek" }],
+    "compatibility": {
+        "minimum": "10",
+        "verified": "10",
+        "maximum": "12"
+    },
+    "url": "https://github.com/mastertomnl/slugblaster-actor-sheet",
+    "version": "0.1",
+    "languages": [{
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json",
+        "flags": {}
+    }],
+    "esmodules": ["/js/main.js"],
+    "styles": ["/css/main.css"],
+    "relationships": { "systems": [{ "id": "dnd5e", "type": "system" }, { "id": "pf2e", "type": "system" }] },
+    "manifest": "https://raw.githubusercontent.com/mastertomnl/slugblaster-actor-sheet/master/module.json",
+    "download": "https://github.com/mastertomnl/slugblaster-actor-sheet/archive/master.zip"
+}
