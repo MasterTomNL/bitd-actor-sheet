@@ -1,0 +1,67 @@
+<form class="sb-actor-sheet {{cssClass}} {{actor.type}}" autocomplete="off">
+	{{!-- Character Portrait --}}
+    <section class="sb-actor-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+		<div class="sb-name-block">
+			<input id="name" name="name" type="text" value="{{actor.name}}" class="sb-name-input" placeholder="{{ localize 'SB.name'}}"/>
+			<label for="name">{{ localize 'SB.name' }}</label>
+		</div>
+    </section>
+
+    {{!-- Personal Section --}}
+    <section class="personal-section">
+        <div class="section">
+			<input id="look" name="system.look" type="text" value="{{actor.system.look}}"/>
+			<label for="look">{{ localize 'SB.look' }}</label>
+
+			<input id="family" name="system.family" type="text" value="{{actor.system.family}}"/>
+			<label for="family">{{ localize 'SB.family' }}</label>
+
+			<input id="bond" name="system.bond" type="text" value="{{actor.system.bond}}"/> 
+			<label for="bond">{{ localize 'SB.bond' }}</label>
+
+			<input id="vibes" name="system.vibes" type="text" value="{{actor.system.vibes}}"/>
+			<label for="vibes">{{ localize 'SB.vibes' }}</label>
+		  
+			<input id="stickers" name="system.stickers" type="text" value="{{actor.system.stickers}}"/>
+			<label for="stickers">{{ localize 'SB.stickers' }}</label>
+        </div>  
+   
+		<!-- GEAR -->
+		<div class="section">
+			<h2 class="section-header">{{ localize 'SB.gear' }}</h2>
+
+			<input id="board" name="system.board" type="text" value="{{actor.system.board}}"/>
+			<label for="board">{{ localize 'SB.your-board' }}</label>
+
+			<input id="raygun" name="system.raygun" type="text" value="{{actor.system.raygun}}"/>
+			<label for="raygun">{{ localize 'SB.your-raygun' }}</label>
+
+			<div class="gear-bulletlist">
+				<div class="gear-tab-grid">
+				  <div class="diff-label ">{{ localize 'SB.equipment'}}</div>
+				  <div class="diff-label centre">{{ localize 'SB.quantity'}}</div>
+				  <div class="diff-label centre item-create" title="{{ localize 'SB.add-gear' }}" data-type="gear">
+					<a class="large-icon"><i class="item-control fas fa-plus"></i></a>
+				  </div>
+				</div>
+				{{#each gears as |gear key|}}
+				<li class="item" style="list-style: none;" data-item-id="{{gear._id}}">
+					<div class="gear-tab-grid">
+					  <div class="combat-input-small">
+						<input class="item inline-edit" data-field="equipment" data-item-id="{{gear._id}}" name="gear.system.equipment" type="text" value="{{gear.system.equipment}}"/>
+					  </div>
+					  <div class="combat-input-small">
+						<input class="item centre inline-edit" data-field="quantity" data-item-id="{{gear._id}}" name="gear.system.quantity" type="text" value="{{gear.system.quantity}}" data-dtype="Number"/>
+					  </div>
+					  <div class="mediumIcon centre item item-delete" data-item-id="{{gear._id}}" title="{{ localize 'BRP.deleteGear' }}">
+						<a><i class="item-control fas fa-trash"></i></a>
+					  </div>
+					</div>
+				</li>  
+				{{/each}}
+			</div>
+		</div>
+    </section>
+</form>
+
