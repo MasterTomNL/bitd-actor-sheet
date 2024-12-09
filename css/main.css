@@ -1,0 +1,14 @@
+/* SLUGBLASTER ACTOR SHEET */
+.sb-actor-sheet label {
+	margin-bottom: 10px;
+	display: block;
+}
+.sb-actor-header .profile-img {
+	float: left;
+	margin-right: 10px;
+}
+.sb-actor-header .sb-name-block { float: left; }
+.sb-actor-header input.sb-name-input {
+	font-size: 2.5em;
+	height: auto;
+}
