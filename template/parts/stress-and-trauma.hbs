@@ -1,0 +1,21 @@
+<!-- STRESS (start) -->
+<section class="sb-stress-block">
+	<div class="personal-data half-width">
+		<label>{{ localize 'BitD.stress' }}</label>
+		<div class="stress-block" data-value="{{actor.system.stress}}" data-key="system.stress">
+			{{#numLoop 9}}
+			<span class="stress" data-index="{{this}}"></span>
+			{{/numLoop}}
+		</div>
+	</div>
+	
+	<div class="personal-data half-width">
+		<label>{{ localize 'BitD.trauma' }}</label>
+    <div class="trauma-block" data-value="{{actor.system.trauma}}" data-key="system.trauma">
+			{{#numLoop 4}}
+			<span class="trauma" data-index="{{this}}"></span>
+			{{/numLoop}}
+		</div>
+    <input type="text" class="trauma_description" name="system.trauma_description" value="{{actor.system.trauma_description}}" placeholder="{{ localize 'BitD.trauma_description_placeholder' }}"/>
+	</div>
+</section>

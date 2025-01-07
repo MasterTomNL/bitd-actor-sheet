@@ -1,14 +1,231 @@
 /* SLUGBLASTER ACTOR SHEET */
+.slugblaster.sheet section.window-content {
+	overflow: scroll;
+}
+.sb-actor-sheet {
+	padding: 5px;
+}
+.sb-actor-sheet section {
+	clear: both;
+	margin-bottom: 8px;
+    display: inline-block;
+	width: 100%;
+}
 .sb-actor-sheet label {
 	margin-bottom: 10px;
 	display: block;
 }
+.sb-actor-sheet h2 {
+	padding-top: 10px;
+	display: inline-block;
+	width: 100%;
+}
 .sb-actor-header .profile-img {
 	float: left;
-	margin-right: 10px;
+	margin-right: 4px;
 }
-.sb-actor-header .sb-name-block { float: left; }
 .sb-actor-header input.sb-name-input {
 	font-size: 2.5em;
 	height: auto;
+}
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border: 0px;
+}
+.sb-actor-header .class-block {
+	clear: both;
+}
+.personal-data {
+	display: inline-block;
+	position: relative;
+	padding: 18px 0px 0px;
+  width: calc(100% - 254px);
+  float: left;
+}
+.personal-data label {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	color: #444;
+}
+
+.sb-gear-block .create, .sb-traits-block .create {
+	display: inline-block;
+}
+.sb-gear-block ul, .sb-traits-block ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.sb-item {
+	width: 100%;
+	float: left;
+}
+.sb-item, .personal-data.half-width {
+	width: 50%;
+}
+.sb-item img {
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: 4px;
+}
+.sb-item input[type="checkbox"] {
+	float: left;
+}
+.sb-item input[type="text"] {
+	float: left;
+	width: calc(100% - 64px);
+}
+
+/* STRESS and TRAUMA */
+.sb-stress-block .personal-data, .sb-attr-block .personal-data {
+	border-top: 2px solid black;
+	padding-top: 0px;
+}
+.sb-stress-block .stress, .sb-stress-block .trauma {
+	display: inline-block;
+	height: 48px;
+	width: 24px;
+	background-image: url('../img/stress.png');
+  background-repeat: no-repeat;
+	background-size: contain;
+}
+.sb-stress-block .trauma {
+  background-image: url('../img/trauma.png');
+}
+.trauma-block {
+  float: left;
+}
+.trauma_description {
+  width: 50% !important;
+  display: inline-block;
+  float: left;
+}
+.sb-stress-block label, .sb-attr-block label {
+	float: left;
+  position: relative;
+  left: 0;
+  top: 0;
+	padding: 6px;
+	background-color: black;
+  color: #ccc;
+	text-transform: uppercase;
+  margin-right: 8px;
+}
+.sb-stress-block .stress.full {
+	background-image: url('../img/stress-full.png');
+}
+.sb-stress-block .trauma.full {
+	background-image: url('../img/trauma-full.png');
+}
+
+.sb-attr-block .attr {
+	display: inline-block;
+	height: 29px;
+	width: 20px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-top: 0px;
+  float: left;
+}
+.sb-attr-block .attr-label {
+  padding-right: 14px;
+  margin: 0px;
+  margin-bottom: 3px;
+}
+.sb-attr-block .attr:nth-child(1) {
+  border-right: 1px dashed #777;
+}
+.sb-attr-block .attr:nth-child(2), .sb-attr-block .attr:nth-child(3), .sb-attr-block .attr:nth-child(4),
+.sb-attr-block .attr:nth-child(5) {
+  border-right: 1px dashed #777;
+  border-left: 0px;
+}
+.sb-attr-block .attr:nth-child(6) {
+  border-left: 0px;
+}
+.sb-attr-block .attr.full {
+  background: #183552;
+}
+
+.third {
+	width: 33%;
+  display: inline-block;
+  float: left;
+}
+
+/* Actions */
+.action-block {
+  display: block;
+  clear: both;
+  height: 20px;
+}
+.action-block .action, .bitd-extra-dice .push-indicator {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  background: #fff;
+  float: left;
+  margin-right: 3px;
+}
+.action-block .action:nth-child(2)::before{
+  position: relative;
+  left: -3px;
+  content: '';
+  border-right: 1px dashed #333;
+}
+.action-block .action.active, .push.active .push-indicator {
+  background:#000;
+}
+.action-block label {
+  position: relative;
+  display: inline-block;
+  background: none;
+  color: #333;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  line-height: 22px;
+}
+.rollable, .stress {
+  cursor: pointer;
+}
+.xp {
+  padding: 4px;
+  vertical-align: middle;
+  display: inline-block;
+  color: #777;
+}
+
+.bitd-harm-block .harm-level {
+  clear: both;
+  width: 100%;
+}
+.bitd-harm-block span {
+  border: 1px solid #777;
+  display: inline-block;
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+  text-align: center;
+  float: left;
+  background-color: rgba(0,0,0,.15);
+}
+.bitd-harm-block input {
+  width: calc(100% - 120px);
+  display: inline-block;
+  float: left;
+}
+.bitd-harm-block input.half {
+  width: calc(50% - 60px);
+}
+.bitd-harm-block span.harm-explainer {
+  width: 90px;
 }

@@ -1,0 +1,21 @@
+<section class="sb-attr-block">
+  {{#each BitD_attributes as |attr|}}
+  <div class="personal-data third">
+		<label class="rollable attr-label" data-type="resistance" data-action="{{ attr.name }}" data-label="{{ attr.label }}">{{ attr.label }}</label>
+    <div class="attr-block" data-value="{{ attr.value }}">
+			{{#numLoop 6}}
+			<span class="attr" data-index="{{ this }}" data-key="{{ attr.name }}" title="{{ attr.labelXp }}"></span>
+			{{/numLoop}}
+      <span class="xp">xp</span>
+		</div>
+    {{#each attr.actions as |action|}}
+    <div class="action-block" data-value="{{ action.value }}">
+      {{#numLoop 4}}
+      <span class="action" data-index="{{this}}" data-key="{{ action.name }}"></span>
+      {{/numLoop}}
+      <label class="rollable" data-value="{{ action.value }}" data-type="action" data-action="{{ action.name }}" title="{{action.description}}">{{ action.label }}</label>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+</section>
