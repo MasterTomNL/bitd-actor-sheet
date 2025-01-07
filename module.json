@@ -1,7 +1,7 @@
 {
     "name": "slugblaster-actor-sheet",
-    "title": "Slugblaster actor sheet for 5E and PF2e",
-    "description": "This module adds an additional actor sheet template - Slugblaster style!",
+    "title": "Blades in the Dark actor sheet (for DnD5E and PF2e)",
+    "description": "This module adds an additional actor sheet template - Blades in the Dark style!",
     "authors": [{ "name": "Tom van der Lek" }],
     "compatibility": {
         "minimum": "10",
@@ -9,7 +9,7 @@
         "maximum": "12"
     },
     "url": "https://github.com/mastertomnl/slugblaster-actor-sheet",
-    "version": "0.1",
+    "version": "0.2",
     "languages": [{
         "lang": "en",
         "name": "English",
