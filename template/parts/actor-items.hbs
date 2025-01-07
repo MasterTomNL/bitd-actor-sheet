@@ -1,12 +1,12 @@
-<h2 class="title">{{ localize 'SB.gear'}}</h2>
-<div class="item-create" title="{{ localize 'SB.addGear' }}" data-type="equipment">
+<h2 class="title">{{ localize 'BitD.gear'}}</h2>
+<div class="item-create" title="{{ localize 'BitD.addGear' }}" data-type="equipment">
 	<a class="large-icon"><i class="item-control fas fa-plus"></i></a>
 </div>
-<div class="sb-gear-list">
+<div class="bitd-gear-list">
 	{{#each items as |item key|}}
-	<li class="sb-gear-item" id="{{key}}">
+	<li class="bitd-gear-item" id="{{key}}">
 		{{item.name}} - {{ item.type }}
-		<div class="item-delete" title="{{ localize 'SB.deleteGear'}}">
+		<div class="item-delete" title="{{ localize 'BitD.deleteGear'}}">
 			<a class="larg-icon"><i class="item-control fas fa-trash"></i></a>
 		</div>
 	</li>

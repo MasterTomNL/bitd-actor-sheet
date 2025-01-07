@@ -1,0 +1,26 @@
+<section class="bitd-harm-block">
+  <h2 class="title">
+    {{ localize 'BitD.harm' }}
+    <span class="healing">
+      {{ localize 'BitD.healing' }}
+      <input type="text" name="system.bitd_healing" value="{{ actor.system.bitd_healing }}" placeholder="0" /> / 4
+    </span>
+  </h2>
+  <div class="harm-level">
+    <span>1</span>
+    <input type="text" name="system.bitd_harm_level_1a" class="harm-description half" placeholder="{{ localize 'BitD.harm_level_1_placeholder' }}" value="{{ actor.system.bitd_harm_level_1a }}"/>
+    <input type="text" name="system.bitd_harm_level_1b" class="harm-description half" placeholder="{{ localize 'BitD.harm_level_1_placeholder' }}" value="{{ actor.system.bitd_harm_level_1b }}"/>
+    <span class="harm-explainer">{{ localize 'BitD.less_effect' }}</span>
+  </div>
+  <div class="harm-level">
+    <span>2</span>
+    <input type="text" name="system.bitd_harm_level_2a" class="harm-description half" placeholder="{{ localize 'BitD.harm_level_2_placeholder' }}" value="{{ actor.system.bitd_harm_level_2a }}"/>
+    <input type="text" name="system.bitd_harm_level_2b" class="harm-description half" placeholder="{{ localize 'BitD.harm_level_2_placeholder' }}" value="{{ actor.system.bitd_harm_level_2b }}"/>
+    <span class="harm-explainer">{{ localize 'BitD.minus_d6' }}</span>
+  </div>
+  <div class="harm-level">
+    <span>3</span>
+    <input type="text" name="system.bitd_harm_level_3" class="harm-description" placeholder="{{ localize 'BitD.harm_level_3_placeholder' }}" value="{{ actor.system.bitd_harm_level_3 }}"/>
+    <span class="harm-explainer">{{ localize 'BitD.need_help' }}</span>
+  </div>
+</section>

@@ -1,15 +1,15 @@
 {
-    "name": "slugblaster-actor-sheet",
-    "title": "Slugblaster actor sheet for 5E and PF2e",
-    "description": "This module adds an additional actor sheet template - Slugblaster style!",
+    "name": "bitd-actor-sheet",
+    "title": "Blades in the Dark actor sheet (for 5E and PF2e)",
+    "description": "This module adds an additional actor sheet template - Blades in the Dark style!",
     "authors": [{ "name": "Tom van der Lek" }],
     "compatibility": {
         "minimum": "10",
         "verified": "12",
         "maximum": "12"
     },
-    "url": "https://github.com/mastertomnl/slugblaster-actor-sheet",
-    "version": "0.1",
+    "url": "https://github.com/mastertomnl/bitd-actor-sheet",
+    "version": "0.2",
     "languages": [{
         "lang": "en",
         "name": "English",
@@ -19,6 +19,6 @@
     "esmodules": ["/js/main.js"],
     "styles": ["/css/main.css"],
     "relationships": { "systems": [{ "id": "dnd5e", "type": "system" }, { "id": "pf2e", "type": "system" }] },
-    "manifest": "https://raw.githubusercontent.com/mastertomnl/slugblaster-actor-sheet/master/module.json",
-    "download": "https://github.com/mastertomnl/slugblaster-actor-sheet/archive/master.zip"
+    "manifest": "https://raw.githubusercontent.com/mastertomnl/bitd-actor-sheet/master/module.json",
+    "download": "https://github.com/mastertomnl/bitd-actor-sheet/archive/master.zip"
 }

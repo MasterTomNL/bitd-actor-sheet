@@ -1,18 +1,18 @@
 import { registerHandlebarsHelpers } from "./handlebar-helpers.mjs";
 
-const modulePath = "modules/slugblaster-actor-sheet";
-const mName = "slugblaster-actor-sheet";
+const modulePath = "modules/bitd-actor-sheet";
+const mName = "bitd-actor-sheet";
 
-class SlugblasterActorSheet extends ActorSheet {
+class BitDActorSheet extends ActorSheet {
     get template() {
-        return `${modulePath}/template/slugblaster-actor-sheet.hbs`;
+        return `${modulePath}/template/bitd-actor-sheet.hbs`;
     }
     
     static get defaultOptions() {
         const options = super.defaultOptions;
         // sheet window options
         mergeObject(options, {
-            classes: ["slugblaster", "sheet", "actor"],
+            classes: ["bitd", "sheet", "actor"],
             width: 750,
             height: 750
         });
@@ -56,7 +56,8 @@ class SlugblasterActorSheet extends ActorSheet {
 		//console.log(context);
 		context.gear = gear;
 		context.traits = traits;
-		context.stress = 0;
+		context.bitd_stress = 0;
+    context.bitd_healing = 0;
     
     context.BitD_attributes = [{
       name: 'resolve',
@@ -111,13 +112,15 @@ class SlugblasterActorSheet extends ActorSheet {
 		// manage attributes
 		html.on('click', '.attr', this._onAction.bind(this));
     // manage stress
-		html.on('click', '.stress', this._onStress.bind(this));
+		html.on('click', '.stress', this._onStressOrTrauma.bind(this));
     // manage trauma
-		html.on('click', '.trauma', this._onTrauma.bind(this));
+		html.on('click', '.trauma', this._onStressOrTrauma.bind(this));
     // manage actions
 		html.on('click', '.action', this._onAction.bind(this));
     // manage pushing yourself
-		html.on('click', '.push', this._onPush.bind(this));
+		html.on('click', '.push', this._onBonusChange.bind(this));
+    // manage pushing yourself
+		html.on('click', '.help', this._onBonusChange.bind(this));
 		
 		// Count dot
 		html.find('.stress-block').each(function () {
@@ -165,10 +168,15 @@ class SlugblasterActorSheet extends ActorSheet {
     
     html.find('.push').each(function () {
 		  const value = this.dataset.value;
-      const bonus = this.dataset.bonus;
+      const bonus = this.dataset['bitd_push_bonus'];
       if (value == bonus)
         $(this).addClass("active");
 		});
+    
+    html.find('.help').each(function() {
+      const value = this.dataset.value;
+      if (value !== "") $(this).addClass("active");
+    });
 	}
 
 	// Handle clickable rolls.
@@ -189,6 +197,7 @@ class SlugblasterActorSheet extends ActorSheet {
     
     let keep = 'kh' // keep highest
     let value = 0;
+    let bonus = 0;
     // get value for resistance rolls
     if (dataset.type == 'resistance') {
       switch (dataset.action) {
@@ -215,32 +224,40 @@ class SlugblasterActorSheet extends ActorSheet {
     
     // Handle ACTION rolls
     if (dataset.type == 'action') {
-      value = dataset.value;
+      value = Number(dataset.value);
       // when you have nothing... and no bonus selected
-      if (value == 0 && !this.actor.system.push_bonus) {
+      if (value == 0 && !this.actor.system.bitd_push_bonus && !this.actor.system.bitd_help_bonus) {
         value = 2;
         keep = 'kl';
       }
     }
     
-    // add push_bonus
-    if (this.actor.system.push_bonus) {
-      value += 1;
+    // help bonus?
+    if (this.actor.system.bitd_help_bonus) {
+      bonus += 1;
+      await this.actor.update({'system.bitd_help_bonus': ''});
+    }
+    
+    // push_bonus?
+    if (this.actor.system.bitd_push_bonus) {
+      bonus += 1;
       // add two stress
-      
-      if (this.actor.system.push_bonus == 'stress')
-        await this.actor.update({'system.stress': this.actor.system.stress + 2});
+      if (this.actor.system.bitd_push_bonus == 'stress')
+        await this.actor.update({'system.bitd_stress': this.actor.system.bitd_stress + 2});
       // deactivate push_bonus
-      await this.actor.update({'system.push_bonus': ''});
+      await this.actor.update({'system.bitd_push_bonus': ''});
     }
     
     // when you have none... don't roll
-    if (value == 0) {
+    if (value == 0 && bonus == 0) {
       return;
     }
     
     // let's roll!
-    let roll = new Roll(value+'d6'+keep, this.actor.getRollData());
+    let formula = value > 0 ? value + 'd6' : '';
+    formula += bonus > 0 ? '+' + bonus + 'd6' : '';
+    formula += keep;
+    let roll = new Roll(formula, this.actor.getRollData());
 		roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       flavor: dataset.label,
@@ -248,13 +265,40 @@ class SlugblasterActorSheet extends ActorSheet {
     });
     return roll;
 	}
-	
-  async _onPush(event) {
+	  
+  async _onBonusChange(event) {
     event.preventDefault();
-		let new_push_bonus = event.currentTarget.dataset.bonus;
-		let push_bonus = this.actor.system.bonus != new_push_bonus ? new_push_bonus : '';
-		await this.actor.update({'system.push_bonus': push_bonus});
+		let dataset = event.currentTarget.dataset;
+    let fieldname = dataset.fieldname;
+    let dom_val = dataset[fieldname];
+		let new_val = this.actor.system[fieldname] != dom_val ? dom_val : "";
+		
+    switch (fieldname) {
+      case 'bitd_push_bonus':
+        await this.actor.update({'system.bitd_push_bonus': new_val});
+        break;
+      case 'bitd_help_bonus':
+        await this.actor.update({'system.bitd_help_bonus': new_val});
+        break;
+    }
+    console.log(this.actor);
   }
+  
+  async _onStressOrTrauma(event) {
+		event.preventDefault();
+		let dataset = event.currentTarget.dataset;
+    let fieldname = dataset.fieldname;
+    let dom_val = Number(dataset.index) + 1;
+		let new_val = this.actor.system[fieldname] != dom_val ? dom_val : 0;
+    switch (fieldname) {
+      case 'bitd_stress':
+        await this.actor.update({'system.bitd_stress': new_val});
+        break;
+      case 'bitd_trauma':
+        await this.actor.update({'system.bitd_trauma': new_val});
+        break;
+    }
+	}
   
 	async _onCreate(event) {
 		event.preventDefault();
@@ -279,35 +323,22 @@ class SlugblasterActorSheet extends ActorSheet {
 	}
 	
 	async _onNameChange(event) {
-		const li = $(event.currentTarget).parents('.sb-item');
+		const li = $(event.currentTarget).parents('.btid-item');
 		const item = this.actor.items.get(li.data('itemId'));
 		return await item.update({'name':event.currentTarget.value});
 	}
 	
 	async _onImgChange(event) {
-		const li = $(event.currentTarget).parents('.sb-item');
+		const li = $(event.currentTarget).parents('.btid-item');
 		const item = this.actor.items.get(li.data('itemId'));
 		return await item.update({'img':event.currentTarget.src});
 	}
 	
 	async _onDelete(event) {
-		const li = $(event.currentTarget).parents('.sb-item');
+		const li = $(event.currentTarget).parents('.btid-item');
 		const item = this.actor.items.get(li.data('itemId'));
 		item.delete();
 		li.slideUp(200, () => this.render(false));
-	}
-
-	async _onStress(event) {
-		event.preventDefault();
-		let new_stress = Number(event.currentTarget.dataset.index) + 1;
-		let stress = this.actor.system.stress != new_stress ? new_stress : 0;
-		await this.actor.update({'system.stress': stress});
-	}
-  async _onTrauma(event) {
-		event.preventDefault();
-		let new_trauma = Number(event.currentTarget.dataset.index) + 1;
-		let trauma = this.actor.system.trauma != new_trauma ? new_trauma : 0;
-		await this.actor.update({'system.trauma': trauma});
 	}
   
   async _onAttribute(event) {
@@ -322,7 +353,6 @@ class SlugblasterActorSheet extends ActorSheet {
 			speaker: ChatMessage.getSpeaker({ actor: this.actor })
 		});*/
   }
-  
   
   async _onAction(event) {
     event.preventDefault();
@@ -339,13 +369,15 @@ class SlugblasterActorSheet extends ActorSheet {
 }
 
 Hooks.once('init', async function () {
-    Actors.registerSheet('slugblaster', SlugblasterActorSheet, {
+    Actors.registerSheet('bitd', BitDActorSheet, {
 		makeDefault: true,
 		label: 'Blades in the Dark Actor Sheet',
 	});
 	registerHandlebarsHelpers();
 	loadTemplates([
-		"modules/slugblaster-actor-sheet/template/parts/attributes.hbs",
-		"modules/slugblaster-actor-sheet/template/parts/stress-and-trauma.hbs"
+		"modules/bitd-actor-sheet/template/parts/attributes.hbs",
+		"modules/bitd-actor-sheet/template/parts/stress-and-trauma.hbs",
+    "modules/bitd-actor-sheet/template/parts/harm.hbs",
+    "modules/bitd-actor-sheet/template/parts/gear.hbs"
 	]);
 });

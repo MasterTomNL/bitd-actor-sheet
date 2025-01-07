@@ -1,21 +1,21 @@
 <!-- STRESS (start) -->
-<section class="sb-stress-block">
-	<div class="personal-data half-width">
+<section class="bitd-stress-block">
+	<div class="personal-data third">
 		<label>{{ localize 'BitD.stress' }}</label>
-		<div class="stress-block" data-value="{{actor.system.stress}}" data-key="system.stress">
+		<div class="stress-block" data-value="{{actor.system.bitd_stress}}" data-key="system.bitd_stress">
 			{{#numLoop 9}}
-			<span class="stress" data-index="{{this}}"></span>
+			<span class="stress" data-fieldname="bitd_stress" data-index="{{this}}"></span>
 			{{/numLoop}}
 		</div>
 	</div>
 	
-	<div class="personal-data half-width">
+	<div class="personal-data two-third">
 		<label>{{ localize 'BitD.trauma' }}</label>
-    <div class="trauma-block" data-value="{{actor.system.trauma}}" data-key="system.trauma">
+    <div class="trauma-block" data-value="{{actor.system.bitd_trauma}}" data-key="system.bitd_trauma">
 			{{#numLoop 4}}
-			<span class="trauma" data-index="{{this}}"></span>
+			<span class="trauma" data-fieldname="bitd_trauma" data-index="{{this}}"></span>
 			{{/numLoop}}
 		</div>
-    <input type="text" class="trauma_description" name="system.trauma_description" value="{{actor.system.trauma_description}}" placeholder="{{ localize 'BitD.trauma_description_placeholder' }}"/>
+    <input type="text" class="trauma_description" name="system.bitd_trauma_description" value="{{actor.system.bitd_trauma_description}}" placeholder="{{ localize 'BitD.trauma_description_placeholder' }}"/>
 	</div>
 </section>

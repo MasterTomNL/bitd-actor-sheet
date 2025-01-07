@@ -1,0 +1,86 @@
+<form class="bitd-actor-sheet {{cssClass}} {{actor.type}}" autocomplete="off">
+	<!-- Character Portrait -->
+  <section class="bitd-actor-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="personal-data">
+      <input id="name" name="name" type="text" value="{{actor.name}}" class="bitd-name-input" placeholder="{{ localize 'BitD.name_placeholder'}}"/>
+      <label for="name">{{ localize 'BitD.name' }}</label>
+    </div>
+    
+    <div class="personal-data">
+      <input id="look" name="system.look" type="text" value="{{actor.system.look}}" placeholder="{{ localize 'BitD.look_placeholder' }}" />
+      <label for="look">{{ localize 'BitD.look' }}</label>
+    </div>
+
+		<div class="personal-data">
+			<input id="heritage" name="system.heritage" type="text" value="{{actor.system.heritage}}" placeholder="{{ localize 'BitD.heritage_placeholder' }}"/> 
+			<label for="heritage">{{ localize 'BitD.heritage' }}</label>
+		</div>
+		
+		<div class="personal-data">
+			<input id="background" name="system.background" type="text" value="{{actor.system.background}}" placeholder="{{ localize 'BitD.background_placeholder' }}"/> 
+			<label for="background">{{ localize 'BitD.background' }}</label>
+		</div>
+
+		<div class="personal-data">
+			<input id="vice" name="system.vice" type="text" value="{{actor.system.vice}}" placeholder="{{ localize 'BitD.vice_placeholder' }}"/>
+			<label for="vice">{{ localize 'BitD.vice' }}</label>
+		</div>
+  </section>
+
+	
+	<!-- ATTRIBUTES -->
+	{{> "modules/bitd-actor-sheet/template/parts/attributes.hbs" }}
+	
+  <!-- EXTRA DICE -->
+  <section class="bitd-extra-dice">
+    <span>{{ localize 'BitD.push-yourself' }}</span>
+    <span class="push" data-fieldname="bitd_push_bonus" data-bitd_push_bonus="stress" data-value="{{ actor.system.bitd_push_bonus }}">
+      <span class="push-indicator"></span>
+      <b>{{ localize 'BitD.plus-two-stress' }}</b>
+    </span>
+    <span class="or">{{ localize 'BitD.or' }}</span>
+    <span class="push" data-fieldname="bitd_push_bonus" data-bitd_push_bonus="devils-bargain" data-value="{{ actor.system.bitd_push_bonus }}">
+      <span class="push-indicator"></span>
+      <b>{{ localize 'BitD.devils-bargain' }}</b>
+    </span>
+    <div class="help" data-fieldname="bitd_help_bonus" data-bitd_help_bonus="true" data-value="{{ actor.system.bitd_help_bonus }}">
+      <span class="help-indicator"></span>
+      <label>{{ localize 'BitD.get_help' }}</label>
+    </div>
+  </section>
+  
+	
+	<!-- STRESS -->
+	{{> "modules/bitd-actor-sheet/template/parts/stress-and-trauma.hbs" }}
+
+  <!-- HARM -->
+  {{> "modules/bitd-actor-sheet/template/parts/harm.hbs" }}
+
+	<!-- GEAR -->
+	{{> "modules/bitd-actor-sheet/template/parts/gear.hbs" }}
+	
+	<!-- TRAITS -->
+	<section class="bitd-traits-block traits">
+		<h2 class="title">
+			{{ localize 'BitD.traits'}}
+			<div class="create" title="{{ localize 'BitD.addTrait' }}" data-type="feat">
+				<a class="large-icon"><i class="fas fa-plus"></i></a>
+			</div>
+		</h2>
+		<div class="bitd-traits-list">
+			<ul>
+			{{#each traits as |trait key|}}
+			<li class="bitd-item" data-item-id="{{trait._id}}">
+				<img src="{{trait.img}}"/>
+				<input class="name" type="text" value="{{trait.name}}"/>
+				<div class="delete" title="{{ localize 'BitD.deleteTrait'}}">
+					<a class="larg-icon"><i class="fas fa-trash"></i></a>
+				</div>
+			</li>
+			{{/each}}
+			</ul>
+		</div>
+	</section>
+</form>
+

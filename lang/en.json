@@ -33,21 +33,29 @@
     "consort": "Consort",
     "sway": "Sway",
     
-    "push-yourself": "Push Yourself (+1d6)",
+    "push-yourself": "Push Yourself (+1d6) for",
     "for": "for",
+    "or": "or",
     "plus-two-stress": "+2 stress",
     "devils-bargain": "Devil's Bargain",
+    "get_help": "Get Help (+1d6)",
 
 		"stress": "Stress",
 		"trauma": "Trauma",
     "trauma_description_placeholder": "Cold - Haunted - Obsessed - Paranoid - Reckless - Soft - Unstable - Vicious",
     
     "harm": "Harm",
+    "healing": "Healing:",
+    "harm_level_1_placeholder": "Lesser",
+    "harm_level_2_placeholder": "Moderate",
+    "harm_level_3_placeholder": "Severe",
+    
     "need_help": "Need Help",
     "minus_d6": "-1d6",
     "less_effect": "Less Effect",
     
     "gear": "Gear",
+    "load": "Load",
     "traits": "Traits"
 	}
 }

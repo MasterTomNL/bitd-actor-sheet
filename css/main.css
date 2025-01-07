@@ -1,30 +1,30 @@
-/* SLUGBLASTER ACTOR SHEET */
-.slugblaster.sheet section.window-content {
+/* Blades in the Dark Actor Sheet */
+.bitd.sheet section.window-content {
 	overflow: scroll;
 }
-.sb-actor-sheet {
+.bitd-actor-sheet {
 	padding: 5px;
 }
-.sb-actor-sheet section {
+.bitd-actor-sheet section {
 	clear: both;
 	margin-bottom: 8px;
     display: inline-block;
 	width: 100%;
 }
-.sb-actor-sheet label {
+.bitd-actor-sheet label {
 	margin-bottom: 10px;
 	display: block;
 }
-.sb-actor-sheet h2 {
+.bitd-actor-sheet h2 {
 	padding-top: 10px;
 	display: inline-block;
 	width: 100%;
 }
-.sb-actor-header .profile-img {
+.bitd-actor-header .profile-img {
 	float: left;
 	margin-right: 4px;
 }
-.sb-actor-header input.sb-name-input {
+.bitd-actor-header input.bitd-name-input {
 	font-size: 2.5em;
 	height: auto;
 }
@@ -33,7 +33,7 @@
   height: 250px;
   border: 0px;
 }
-.sb-actor-header .class-block {
+.bitd-actor-header .class-block {
 	clear: both;
 }
 .personal-data {
@@ -50,78 +50,50 @@
 	color: #444;
 }
 
-.sb-gear-block .create, .sb-traits-block .create {
-	display: inline-block;
-}
-.sb-gear-block ul, .sb-traits-block ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-.sb-item {
-	width: 100%;
-	float: left;
-}
-.sb-item, .personal-data.half-width {
-	width: 50%;
-}
-.sb-item img {
-	width: 32px;
-	height: 32px;
-	float: left;
-	margin-right: 4px;
-}
-.sb-item input[type="checkbox"] {
-	float: left;
-}
-.sb-item input[type="text"] {
-	float: left;
-	width: calc(100% - 64px);
-}
-
 /* STRESS and TRAUMA */
-.sb-stress-block .personal-data, .sb-attr-block .personal-data {
+.bitd-stress-block .personal-data, .bitd-attr-block .personal-data {
 	border-top: 2px solid black;
 	padding-top: 0px;
 }
-.sb-stress-block .stress, .sb-stress-block .trauma {
+.bitd-stress-block .stress, .bitd-stress-block .trauma {
 	display: inline-block;
 	height: 48px;
-	width: 24px;
+	width: 18px;
+  float: left;
 	background-image: url('../img/stress.png');
   background-repeat: no-repeat;
 	background-size: contain;
 }
-.sb-stress-block .trauma {
+.bitd-stress-block .trauma {
   background-image: url('../img/trauma.png');
 }
 .trauma-block {
   float: left;
 }
 .trauma_description {
-  width: 50% !important;
+  width: calc(100% - 149px) !important;
   display: inline-block;
   float: left;
 }
-.sb-stress-block label, .sb-attr-block label {
+.bitd-stress-block label, .bitd-attr-block label {
 	float: left;
   position: relative;
   left: 0;
   top: 0;
-	padding: 6px;
+	padding: 6px 14px 6px 6px;
 	background-color: black;
   color: #ccc;
 	text-transform: uppercase;
-  margin-right: 8px;
 }
-.sb-stress-block .stress.full {
+.bitd-stress-block .stress.full {
 	background-image: url('../img/stress-full.png');
 }
-.sb-stress-block .trauma.full {
+.bitd-stress-block .trauma.full {
 	background-image: url('../img/trauma-full.png');
 }
 
-.sb-attr-block .attr {
+/* ATTRIBUTES */
+.bitd-attr-block .attr {
 	display: inline-block;
 	height: 29px;
 	width: 20px;
@@ -130,23 +102,21 @@
   border-top: 0px;
   float: left;
 }
-.sb-attr-block .attr-label {
-  padding-right: 14px;
-  margin: 0px;
+.bitd-attr-block .attr-label {
   margin-bottom: 3px;
 }
-.sb-attr-block .attr:nth-child(1) {
+.bitd-attr-block .attr:nth-child(1) {
   border-right: 1px dashed #777;
 }
-.sb-attr-block .attr:nth-child(2), .sb-attr-block .attr:nth-child(3), .sb-attr-block .attr:nth-child(4),
-.sb-attr-block .attr:nth-child(5) {
+.bitd-attr-block .attr:nth-child(2), .bitd-attr-block .attr:nth-child(3), .bitd-attr-block .attr:nth-child(4),
+.bitd-attr-block .attr:nth-child(5) {
   border-right: 1px dashed #777;
   border-left: 0px;
 }
-.sb-attr-block .attr:nth-child(6) {
+.bitd-attr-block .attr:nth-child(6) {
   border-left: 0px;
 }
-.sb-attr-block .attr.full {
+.bitd-attr-block .attr.full {
   background: #183552;
 }
 
@@ -155,14 +125,20 @@
   display: inline-block;
   float: left;
 }
+.two-third {
+	width: 66%;
+  display: inline-block;
+  float: left;
+}
 
-/* Actions */
+
+/* ACTIONS */
 .action-block {
   display: block;
   clear: both;
   height: 20px;
 }
-.action-block .action, .bitd-extra-dice .push-indicator {
+.action-block .action, .bitd-extra-dice .push-indicator, .help-indicator {
   position: relative;
   display: inline-block;
   height: 20px;
@@ -179,8 +155,8 @@
   content: '';
   border-right: 1px dashed #333;
 }
-.action-block .action.active, .push.active .push-indicator {
-  background:#000;
+.action-block .action.active, .push.active .push-indicator, .help.active .help-indicator {
+  background: #000;
 }
 .action-block label {
   position: relative;
@@ -193,7 +169,7 @@
   vertical-align: middle;
   line-height: 22px;
 }
-.rollable, .stress {
+.rollable, .stress, .trauma, .push, .help, .action, .attr {
   cursor: pointer;
 }
 .xp {
@@ -203,11 +179,20 @@
   color: #777;
 }
 
+
+/* HARM and HEALING */
+.bitd-harm-block .healing {
+  float: right;
+}
+.bitd-harm-block .healing input {
+  display: inline-block;
+  width: 20px;
+}
 .bitd-harm-block .harm-level {
   clear: both;
   width: 100%;
 }
-.bitd-harm-block span {
+.bitd-harm-block .harm-level span {
   border: 1px solid #777;
   display: inline-block;
   width: 30px;
@@ -218,7 +203,7 @@
   float: left;
   background-color: rgba(0,0,0,.15);
 }
-.bitd-harm-block input {
+.bitd-harm-block .harm-level input {
   width: calc(100% - 120px);
   display: inline-block;
   float: left;
@@ -228,4 +213,43 @@
 }
 .bitd-harm-block span.harm-explainer {
   width: 90px;
+}
+
+.bitd-extra-dice * { float: left; }
+.push, .or { margin-left: 6px; }
+.or { font-style: italic; }
+.help { float: right; width: 34%; }
+
+
+/* GEAR and TRAITS */
+.bitd-gear-block .create, .bitd-traits-block .create {
+	display: inline-block;
+}
+.bitd-gear-block .loadout {
+  float: right;
+}
+.bitd-gear-block ul, .bitd-traits-block ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.bitd-item {
+	width: 100%;
+	float: left;
+}
+.bitd-item, .personal-data.half-width {
+	width: 50%;
+}
+.bitd-item img {
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: 4px;
+}
+.bitd-item input[type="checkbox"] {
+	float: left;
+}
+.bitd-item input[type="text"] {
+	float: left;
+	width: calc(100% - 64px);
 }

@@ -1,0 +1,24 @@
+<section class="bitd-gear-block items">
+  <h2 class="title">
+    {{ localize 'BitD.gear'}}
+    <div class="create" title="{{ localize 'BitD.addGear' }}" data-type="equipment">
+      <a class="large-icon"><i class="item-control fas fa-plus"></i></a>
+    </div>
+    <!--<span class="loadout">
+      {{ localize 'BitD.load' }}
+    </span>-->
+  </h2>
+  <div class="bitd-gear-list">
+    <ul>
+    {{#each gear as |item key|}}
+    <li class="bitd-item" data-item-id="{{item._id}}">
+      <img src="{{item.img}}"/>
+      <input class="name" type="text" value="{{item.name}}"/>
+      <div class="delete" title="{{ localize 'BitD.deleteGear'}}">
+        <a class="larg-icon"><i class="item-control fas fa-trash"></i></a>
+      </div>
+    </li>
+    {{/each}}
+    </ul>
+  </div>
+</section>
