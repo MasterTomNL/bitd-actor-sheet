@@ -1,2 +1,2 @@
-# slugblaster-actor-sheet
-Slugblaster actor sheet for foundry (5E and PF2e)
+# Blades in the Dark actor sheet
+A system agnostic (DnD5E, PF2e, etc.) Blades in the Dark actor sheet for foundry
