@@ -1,19 +1,53 @@
 {
-	"SB": {
+	"BitD": {
 		"name": "Name",
+		"name_placeholder": "Your name...",
 		"look": "Look",
-		"family": "Family",
-		"bond": "Bond",
-		"vibes": "Vibes",
-		"stickers": "Stickers, etc.",
-		"the-chill": "The Chill",
-		"gear": "Gear",
-		"your-board": "your board",
-		"your-raygun": "your raygun",
-		"your-phone": "your phone",
-		"something-you-found-on-your-way-here": "something you found on your way here",
-		"equipment": "Equipment",
-		"quantity": "Quantity",
-		"add-gear": "Add gear"
+		"look_placeholder": "",
+		"heritage": "Heritage",
+		"heritage_placeholder": "Country - Culture",
+		"background": "Background",
+		"background_placeholder": "Academic - Labor - Law - Trade - Military - Noble - Underworld",
+		"vice": "Vice",
+		"vice_placeholder": "Faith - Gambling - Luxury - Obligation - Pleasure - Stupor - Weird",
+    
+    "attributes-and-actions": "Attributes and actions",
+
+		"insight": "Insight",
+    "insight-xp": "Insight Exp",
+		"prowess": "Prowess",
+    "prowess-xp": "Prowess Exp",
+		"resolve": "Resolve",
+    "resolve-xp": "Resolve Exp",
+
+		"hunt": "Hunt",
+    "study": "Study",
+    "survey": "Survey",
+    "tinker": "Tinker",
+    "finesse": "Finesse",
+    "prowl": "Prowl",
+    "skirmish": "Skirmish",
+    "wreck": "Wreck",
+    "attune": "Attune",
+    "command": "Command",
+    "consort": "Consort",
+    "sway": "Sway",
+    
+    "push-yourself": "Push Yourself (+1d6)",
+    "for": "for",
+    "plus-two-stress": "+2 stress",
+    "devils-bargain": "Devil's Bargain",
+
+		"stress": "Stress",
+		"trauma": "Trauma",
+    "trauma_description_placeholder": "Cold - Haunted - Obsessed - Paranoid - Reckless - Soft - Unstable - Vicious",
+    
+    "harm": "Harm",
+    "need_help": "Need Help",
+    "minus_d6": "-1d6",
+    "less_effect": "Less Effect",
+    
+    "gear": "Gear",
+    "traits": "Traits"
 	}
 }
