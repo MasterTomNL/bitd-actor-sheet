@@ -1,0 +1,120 @@
+<form class="sb-actor-sheet {{cssClass}} {{actor.type}}" autocomplete="off">
+	<!-- Character Portrait -->
+  <section class="sb-actor-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="personal-data">
+      <input id="name" name="name" type="text" value="{{actor.name}}" class="sb-name-input" placeholder="{{ localize 'BitD.name_placeholder'}}"/>
+      <label for="name">{{ localize 'BitD.name' }}</label>
+    </div>
+    
+    <div class="personal-data">
+      <input id="look" name="system.look" type="text" value="{{actor.system.look}}" placeholder="{{ localize 'BitD.look_placeholder' }}" />
+      <label for="look">{{ localize 'BitD.look' }}</label>
+    </div>
+
+		<div class="personal-data">
+			<input id="heritage" name="system.heritage" type="text" value="{{actor.system.heritage}}" placeholder="{{ localize 'BitD.heritage_placeholder' }}"/> 
+			<label for="heritage">{{ localize 'BitD.heritage' }}</label>
+		</div>
+		
+		<div class="personal-data">
+			<input id="background" name="system.background" type="text" value="{{actor.system.background}}" placeholder="{{ localize 'BitD.background_placeholder' }}"/> 
+			<label for="background">{{ localize 'BitD.background' }}</label>
+		</div>
+
+		<div class="personal-data">
+			<input id="vice" name="system.vice" type="text" value="{{actor.system.vice}}" placeholder="{{ localize 'BitD.vice_placeholder' }}"/>
+			<label for="vice">{{ localize 'BitD.vice' }}</label>
+		</div>
+  </section>
+
+	
+	<!-- ATTRIBUTES -->
+	{{> "modules/slugblaster-actor-sheet/template/parts/attributes.hbs" }}
+	
+  <!-- EXTRA DICE -->
+  <section class="bitd-extra-dice">
+    <h3 class="title third">{{ localize 'BitD.push-yourself' }}</h3>
+    <div class="third push" data-bonus="stress" data-value="{{ actor.system.push_bonus }}">
+      <span class="push-indicator" data-bonus="stress"></span>
+      <label>{{ localize 'BitD.for' }} <b>{{ localize 'BitD.plus-two-stress' }}</b></label>
+    </div>
+    <div class="third push" data-bonus="bargain" data-value="{{ actor.system.push_bonus }}">
+      <span class="push-indicator"></span>
+      <label>{{ localize 'BitD.for' }} <b>{{ localize 'BitD.devils-bargain' }}</b></label>
+    </div>
+  </section>
+  
+	
+	<!-- STRESS -->
+	{{> "modules/slugblaster-actor-sheet/template/parts/stress-and-trauma.hbs" }}
+
+  <!-- HARM -->
+  <section class="bitd-harm-block">
+    <h2 class="title">{{ localize 'BitD.harm' }}</h2>
+    <div class="harm-level">
+      <span>1</span>
+      <input type="text" name="system.harm_level_1a" class="harm-description half" value="{{ actor.system.harm_level_1a }}"/>
+      <input type="text" name="system.harm_level_1b" class="harm-description half" value="{{ actor.system.harm_level_1b }}"/>
+      <span class="harm-explainer">{{ localize 'BitD.less_effect' }}</span>
+    </div>
+    <div class="harm-level">
+      <span>2</span>
+      <input type="text" name="system.harm_level_2a" class="harm-description half" value="{{ actor.system.harm_level_2a }}"/>
+      <input type="text" name="system.harm_level_2b" class="harm-description half" value="{{ actor.system.harm_level_2b }}"/>
+      <span class="harm-explainer">{{ localize 'BitD.minus_d6' }}</span>
+    </div>
+    <div class="harm-level">
+      <span>3</span>
+      <input type="text" name="system.harm_level_3" class="harm-description" value="{{ actor.system.harm_level_3 }}"/>
+      <span class="harm-explainer">{{ localize 'BitD.need_help' }}</span>
+    </div>
+  </section>
+
+	<!-- GEAR -->
+	<section class="sb-gear-block items">
+		<h2 class="title">
+			{{ localize 'BitD.gear'}}
+			<div class="create" title="{{ localize 'BitD.addGear' }}" data-type="equipment">
+				<a class="large-icon"><i class="item-control fas fa-plus"></i></a>
+			</div>
+		</h2>
+		<div class="sb-gear-list">
+			<ul>
+			{{#each gear as |item key|}}
+			<li class="sb-item" data-item-id="{{item._id}}">
+				<img src="{{item.img}}"/>
+				<input class="name" type="text" value="{{item.name}}"/>
+				<div class="delete" title="{{ localize 'BitD.deleteGear'}}">
+					<a class="larg-icon"><i class="item-control fas fa-trash"></i></a>
+				</div>
+			</li>
+			{{/each}}
+			</ul>
+		</div>
+	</section>
+	
+	<!-- TRAITS -->
+	<section class="sb-traits-block traits">
+		<h2 class="title">
+			{{ localize 'BitD.traits'}}
+			<div class="create" title="{{ localize 'BitD.addTrait' }}" data-type="feat">
+				<a class="large-icon"><i class="fas fa-plus"></i></a>
+			</div>
+		</h2>
+		<div class="sb-traits-list">
+			<ul>
+			{{#each traits as |trait key|}}
+			<li class="sb-item" data-item-id="{{trait._id}}">
+				<img src="{{trait.img}}"/>
+				<input class="name" type="text" value="{{trait.name}}"/>
+				<div class="delete" title="{{ localize 'BitD.deleteTrait'}}">
+					<a class="larg-icon"><i class="fas fa-trash"></i></a>
+				</div>
+			</li>
+			{{/each}}
+			</ul>
+		</div>
+	</section>
+</form>
+
