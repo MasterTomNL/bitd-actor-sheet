@@ -4,7 +4,7 @@
     "description": "This module adds an additional actor sheet template - Blades in the Dark style!",
     "authors": [{ "name": "Tom van der Lek" }],
     "compatibility": {
-        "minimum": "10",
+        "minimum": "12",
         "verified": "12",
         "maximum": "12"
     },
