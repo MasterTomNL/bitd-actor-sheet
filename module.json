@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "name": "bitd-actor-sheet",
     "title": "Blades in the Dark actor sheet (for 5E and PF2e)",
     "description": "This module adds an additional actor sheet template - Blades in the Dark style!",
@@ -9,7 +8,6 @@
         "verified": "12",
         "maximum": "12"
     },
-<<<<<<< HEAD
     "url": "https://github.com/mastertomnl/bitd-actor-sheet",
     "version": "0.2",
     "languages": [{
@@ -21,7 +19,6 @@
     "esmodules": ["/js/main.js"],
     "styles": ["/css/main.css"],
     "relationships": { "systems": [{ "id": "dnd5e", "type": "system" }, { "id": "pf2e", "type": "system" }] },
-<<<<<<< HEAD
     "manifest": "https://raw.githubusercontent.com/mastertomnl/bitd-actor-sheet/master/module.json",
     "download": "https://github.com/mastertomnl/bitd-actor-sheet/archive/master.zip"
 }
